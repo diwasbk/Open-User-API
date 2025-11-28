@@ -95,4 +95,25 @@ export class UserController {
             success: true
         })
     }
+
+    // Delete User by Id
+    deleteUserById = (req, res) => {
+        const existingUser = users.find((user) => {
+            return user.id == req.params.id
+        })
+        if (!existingUser) {
+            return res.status(404).send({
+                message: "User not found",
+                success: false
+            })
+        }
+        const userIndex = users.findIndex((user) => {
+            return user.id == req.params.id
+        })
+        users.splice(userIndex, 1)
+        res.status(200).send({
+            message: `User ${existingUser.name} deleted successfully`,
+            success: true
+        })
+    }
 };
