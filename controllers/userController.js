@@ -75,4 +75,24 @@ export class UserController {
             })
         }
     }
+
+    // Update User by Id
+    updateUserById = (req, res) => {
+        const userExist = users.find((user) => {
+            return user.id == req.params.id
+        })
+        if (!userExist) {
+            return res.status(404).send({
+                message: "User not found",
+                success: false
+            })
+        }
+        // Update all fields coming from req.body
+        Object.assign(userExist, req.body)
+        res.status(200).send({
+            message: `User ${userExist.name} updated successfully`,
+            result: userExist,
+            success: true
+        })
+    }
 };
