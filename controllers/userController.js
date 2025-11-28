@@ -112,6 +112,7 @@ export class UserController {
         })
         users.splice(userIndex, 1)
         res.status(200).send({
+            status: 200,
             message: `User ${existingUser.name} deleted successfully`,
             success: true
         })
