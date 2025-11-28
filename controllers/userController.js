@@ -41,4 +41,38 @@ export class UserController {
             })
         }
     }
+
+    // Post New User
+    postNewUser = (req, res) => {
+        try {
+            const existingUser = users.find((user) => {
+                return user.id == req.body.id
+            })
+            if (existingUser) {
+                return res.status(400).send({
+                    message: "User already exist",
+                    success: false
+                })
+            }
+            const newUser = {
+                id: req.body.id,
+                username: req.body.username,
+                email: req.body.email,
+                name: req.body.name,
+                age: req.body.age,
+                address: req.body.address
+            }
+            users.push(newUser)
+            res.status(201).send({
+                message: `Welcome ${req.body.name}`,
+                result: newUser,
+                success: true
+            })
+        } catch (err) {
+            res.send({
+                message: err.message ?? "Unknown error",
+                success: false
+            })
+        }
+    }
 };
