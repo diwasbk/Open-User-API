@@ -50,7 +50,7 @@ export class UserController {
             })
             if (existingUser) {
                 return res.status(400).send({
-                    message: "User already exist",
+                    message: "User ID already exist",
                     success: false
                 })
             }
@@ -87,8 +87,9 @@ export class UserController {
                 success: false
             })
         }
-        // Update all fields coming from req.body
-        Object.assign(userExist, req.body)
+        // Destructure req.body and exclude `id` so it cannot be updated
+        const{id, ...results} = req.body
+        Object.assign(userExist, results)
         res.status(200).send({
             message: `User ${userExist.name} updated successfully`,
             result: userExist,
