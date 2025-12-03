@@ -2,6 +2,8 @@
 
 A simple and lightweight Express.js-based REST API for managing user data. This project demonstrates basic CRUD (Create, Read, Update, Delete) operations with a clean MVC architecture.
 
+### Live API: https://openuser.onrender.com/api/user
+
 ## 📋 Table of Contents
 
 - [Features](#features)
@@ -26,7 +28,8 @@ A simple and lightweight Express.js-based REST API for managing user data. This 
 ```
 Open-User-API/
 ├── app.js                 # Main application entry point
-├── package.json          # Project dependencies
+├── package.json           # Project dependencies
+├── .env                   # Environment variables
 ├── controllers/
 │   └── userController.js # User business logic
 ├── models/
@@ -41,6 +44,7 @@ Open-User-API/
 ```bash
 git clone https://github.com/diwasbk/Open-User-API.git
 cd Open-User-API
+cd app
 ```
 
 2. Install dependencies:
@@ -52,10 +56,10 @@ npm install
 
 Start the server:
 ```bash
-npm start
+node app.js
 ```
 
-The server will run on `http://localhost:4200`
+Create a .env file in the app folder and define the PORT
 
 ## 📡 API Endpoints
 
